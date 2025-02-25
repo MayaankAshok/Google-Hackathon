@@ -1,0 +1,423 @@
+:root {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent: #646cff;
+  --border: #404040;
+  --upload-area-height: 200px;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  min-height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.upload-section,
+.results-section {
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+input[type="file"] {
+  padding: 1.5rem;
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+  border-color: var(--accent);
+  background-color: rgba(100, 108, 255, 0.08);
+}
+
+.upload-section input[type="file"] {
+  opacity: 0;
+  width: 100%;
+  height: var(--upload-area-height);
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.upload-section .file-input-wrapper {
+  width: 100%;
+  height: var(--upload-area-height);
+  position: relative;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  background-color: var(--bg-primary);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.upload-section .file-input-wrapper:hover {
+  border-color: var(--accent);
+  background-color: rgba(100, 108, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.upload-section .file-input-wrapper:active {
+  transform: translateY(0);
+}
+
+.upload-section .file-input-wrapper::before {
+  content: '📁';
+  font-size: 2rem;
+}
+
+.upload-section .file-input-wrapper::after {
+  content: 'Drag and drop files here or click to upload';
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.upload-section input[type="file"]::before {
+  content: 'Drag and drop files here or click to upload';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.upload-section input[type="file"]:hover {
+  border-color: var(--accent);
+  background-color: rgba(100, 108, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.upload-section input[type="file"]:active {
+  transform: translateY(0);
+}
+
+.upload-section p {
+  background-color: var(--bg-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.upload-section p {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.results-content {
+  padding: 1.5rem;
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+p {
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.upload-button {
+  background-color: var(--accent);
+  color: var(--text-primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #535bf2;
+  transform: translateY(-2px);
+}
+
+.upload-button:disabled {
+  background-color: var(--border);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.preview-container {
+  width: 100%;
+  max-width: 400px;  /* Add max-width constraint */
+  min-height: 100px; /* Reduce min-height */
+  margin: 0 auto;    /* Center container */
+  position: relative;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;  /* Reduce padding */
+}
+
+.preview-container .preview-image {
+  max-width: 100%;
+  max-height: 300px;  /* Add max-height constraint */
+  height: auto;
+  margin: 0;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.clear-selection {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.clear-selection:hover {
+  background: var(--border);
+  transform: scale(1.1);
+}
+
+.prescription-card {
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.prescription-card:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
+  background-color: rgba(100, 108, 255, 0.08);
+}
+
+.prescription-details {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--text-secondary);
+}
+
+.medicine-name {
+  color: var(--text-primary);
+  font-weight: 500;
+  min-width: 120px;
+}
+
+.description {
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.dosage {
+  color: var(--accent);
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: rgba(100, 108, 255, 0.1);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 1rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--bg-primary);
+  border-radius: 50%;
+  border-top-color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.similar-button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.similar-button:hover {
+  background-color: rgba(100, 108, 255, 0.1);
+  transform: translateX(2px);
+}
+
+.similar-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.similar-button.loading {
+  animation: spin 1s linear infinite;
+}
+
+.similar-medicines {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.similar-medicines h4 {
+  color: var(--text-secondary);
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+}
+
+.similar-medicines ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.similar-medicines li {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.medicine-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  padding-left: 8px;
+  font-style: italic;
+}

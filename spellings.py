@@ -69,7 +69,7 @@ def verify_medicine(medicine_name, medicine_db):
 
 # Load medicine database from CSV
 medicine_db = load_medicine_db('data.csv')
-print("Medicine database:", medicine_db)  # Debugging
+# print("Medicine database:", medicine_db)  # Debugging
 
 # Test the function with a valid medicine name
 """test_medicine = 'Zyvocol 1% Dusting Powder'
